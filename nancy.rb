@@ -83,3 +83,13 @@ module Nancy
 end
 
 include Nancy::Delegator
+
+nancy = Nancy::Base.new
+
+nancy.get "/hello" do
+  [200, {}, ["Nancy says hello"]]
+end
+
+puts nancy.routes
+
+Rack::Handler::WEBrick.run nancy, Port: 9292
